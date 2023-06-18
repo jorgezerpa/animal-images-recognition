@@ -1,0 +1,22 @@
+# Ignore venv directory
+venv/
+bin
+
+# Ignore Python compiled bytecode files
+*.pyc
+__pycache__/
+
+# Ignore IDE files
+.vscode/
+*.idea/
+
+# Ignore log files
+*.log
+
+# Ignore specific files and directories
+lib/
+lib64/
+animal_faces_80x80px.pkl
+example_animal_faces_80x80px.pkl
+include/
+src/datasets/

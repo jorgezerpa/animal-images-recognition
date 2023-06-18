@@ -1,0 +1,1 @@
+we will set up a machine learning pipeline in scikit-learn to preprocess data and train a model. As a test case, we will classify animal photos.
