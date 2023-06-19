@@ -49,8 +49,30 @@ scalify = StandardScaler()
 X_train_gray = grayify.fit_transform(X_train)
 X_train_hog = hogify.fit_transform(X_train_gray)
 X_train_prepared = scalify.fit_transform(X_train_hog)
+# print(X_train_prepared.shape)
  
-print(X_train_prepared.shape)
+
+
+
+    # TRAINING THE MODEL
+from sklearn.linear_model import SGDClassifier #The next step is to train a classifier. We will start with Stochastic Gradient Descent (SGD), because it is fast and works reasonably well.
+# from sklearn.model_selection import cross_val_predict
+
+sgd_clf = SGDClassifier(random_state=42, max_iter=1000, tol=1e-3)
+sgd_clf.fit(X_train_prepared, y_train) 
+
+    #preparing testing data
+X_test_gray = grayify.transform(X_test)
+X_test_hog = hogify.transform(X_test_gray)
+X_test_prepared = scalify.transform(X_test_hog)
+
+    #making prediction
+y_pred = sgd_clf.predict(X_test_prepared)
+print(np.array(y_pred == y_test)[:25])
+print('')
+print('Percentage correct: ', 100*np.sum(y_pred == y_test)/len(y_test))
+
+
 
 
 
